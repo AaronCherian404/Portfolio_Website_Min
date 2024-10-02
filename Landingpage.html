@@ -3,61 +3,348 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Portfolio Bookshelf</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>CLASSIFIED: Aaron Mano Cherian</title>
+    <style>
+        :root {
+            --paper-color: #f4f1e9;
+            --ink-color: #333;
+            --stamp-color: #c41e3a;
+            --redacted-bg: #000;
+            --link-color: #2c5282;
+        }
+
+        body {
+            font-family: "Courier New", monospace;
+            background-color: var(--paper-color);
+            color: var(--ink-color);
+            line-height: 1.6;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .document {
+            background-color: white;
+            padding: 3rem;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .top-secret {
+            position: absolute;
+            top: 20px;
+            right: -50px;
+            background-color: var(--stamp-color);
+            color: white;
+            padding: 5px 50px;
+            transform: rotate(45deg);
+            font-weight: bold;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        .document-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--ink-color);
+            padding-bottom: 1rem;
+        }
+
+        .classified-stamp {
+            color: var(--stamp-color);
+            border: 3px solid var(--stamp-color);
+            display: inline-block;
+            padding: 0.5rem 2rem;
+            transform: rotate(-5deg);
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .section {
+            margin: 2rem 0;
+            padding: 1rem;
+            border: 1px solid #ccc;
+            background-color: rgba(255,255,255,0.7);
+        }
+
+        .section-header {
+            font-weight: bold;
+            border-bottom: 1px solid var(--ink-color);
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .clearance-level {
+            font-size: 0.8rem;
+            color: var(--stamp-color);
+        }
+
+        .redacted {
+            background-color: var(--redacted-bg);
+            color: transparent;
+            user-select: none;
+            padding: 0 5px;
+        }
+
+        .metadata {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 8rem;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .subject-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 2rem;
+        }
+
+        .subject-details {
+            flex: 1;
+        }
+
+        .subject-photo {
+            width: 200px;
+            height: 240px;
+            border: 2px solid #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f5f5f5;
+        }
+
+        .social-links a {
+            color: var(--link-color);
+            text-decoration: none;
+            margin-right: 1rem;
+        }
+
+        .social-links a:hover {
+            text-decoration: underline;
+        }
+
+        .operation-card {
+            border: 1px solid #ccc;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            background-color: rgba(244, 241, 233, 0.5);
+        }
+
+        .education-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .education-item h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .operation-details {
+            margin-top: 1rem;
+            padding-left: 1rem;
+            border-left: 2px solid #ccc;
+        }
+    </style>
 </head>
 <body>
-    <div class="bookshelf-container">
-        <div class="bookshelf">
-            <div class="shelf-section">
-                <div class="shelf-label">Profile</div>
-                <div class="shelf">
-                    <div class="book" data-page="about"><span class="spine">About Me</span></div>
-                    <div class="book" data-page="education"><span class="spine">Education</span></div>
-                    <div class="book" data-page="experience"><span class="spine">Experience</span></div>
-                    <div class="book" data-page="hobbies"><span class="spine">Hobbies</span></div>
-                    <div class="book" data-page="goals"><span class="spine">Goals</span></div>
-                    <div class="book" data-page="skills"><span class="spine">Skills</span></div>
-                    <div class="book" data-page="achievements"><span class="spine">Achievements</span></div>
-                    <div class="book" data-page="interests"><span class="spine">Interests</span></div>
-                    <div class="book" data-page="volunteering"><span class="spine">Volunteering</span></div>
-                    <div class="book" data-page="awards"><span class="spine">Awards</span></div>
-                </div>
-            </div>
+    <div class="document">
+        <div class="watermark">CLASSIFIED</div>
+        <div class="top-secret">TOP SECRET</div>
+        
+        <div class="document-header">
+            <div class="classified-stamp">CLASSIFIED INFORMATION</div>
+            <h1>SUBJECT: AARON MANO CHERIAN</h1>
+            <p class="metadata">
+                FILE №: AC-13022003<br>
+                CLEARANCE LEVEL: <span class="redacted">TOP SECRET</span><br>
+                ALLEGIANCE: INDIAN
+                STATUS: ACTIVE
+            </p>
+        </div>
 
-            <div class="shelf-section">
-                <div class="shelf-label">Projects</div>
-                <div class="shelf">
-                    <div class="book" data-page="project1"><span class="spine">Web App</span></div>
-                    <div class="book" data-page="project2"><span class="spine">Mobile App</span></div>
-                    <div class="book" data-page="project3"><span class="spine">AI Model</span></div>
-                    <div class="book" data-page="project4"><span class="spine">Game Dev</span></div>
-                    <div class="book" data-page="project5"><span class="spine">Data Viz</span></div>
-                    <div class="book" data-page="project6"><span class="spine">IoT Project</span></div>
-                    <div class="book" data-page="project7"><span class="spine">UI/UX Design</span></div>
-                    <div class="book" data-page="project8"><span class="spine">Blockchain</span></div>
-                    <div class="book" data-page="project9"><span class="spine">AR/VR App</span></div>
-                    <div class="book" data-page="project10"><span class="spine">ML Model</span></div>
-                </div>
+        <div class="section">
+            <div class="section-header">
+                <span>SUBJECT IDENTIFICATION</span>
+                <span class="clearance-level">TS//SI</span>
             </div>
-
-            <div class="shelf-section">
-                <div class="shelf-label">Skills</div>
-                <div class="shelf">
-                    <div class="book" data-page="programming"><span class="spine">Programming</span></div>
-                    <div class="book" data-page="design"><span class="spine">Design</span></div>
-                    <div class="book" data-page="softskills"><span class="spine">Soft Skills</span></div>
-                    <div class="book" data-page="languages"><span class="spine">Languages</span></div>
-                    <div class="book" data-page="tools"><span class="spine">Tools</span></div>
-                    <div class="book" data-page="frameworks"><span class="spine">Frameworks</span></div>
-                    <div class="book" data-page="databases"><span class="spine">Databases</span></div>
-                    <div class="book" data-page="cloud"><span class="spine">Cloud</span></div>
-                    <div class="book" data-page="devops"><span class="spine">DevOps</span></div>
-                    <div class="book" data-page="testing"><span class="spine">Testing</span></div>
+            <div class="subject-info">
+                <div class="subject-details">
+                    <p>
+                        NAME: Aaron Mano Cherian<br>
+                        LOCATION: Bangalore, India<br>
+                        COMMUNICATION CHANNELS: <br>
+                        - TEL: +91 8310292241<br>
+                        - EMAIL: aaronmanocherian@gmail.com<br>
+                        
+                        
+                        <div class="social-links">
+                            VIRTUAL IDENTITY:<br>
+                            - GITHUB: <a href="https://github.com/AaronCherian404" target="_blank">github.com/AaronCherian404</a><br>
+                        - LINKEDIN: <a href="https://www.linkedin.com/in/aaron-cherian/" target="_blank">linkedin.com/in/aaron-cherian</a>
+                        </div>
+                    </p>
+                </div>
+                <div class="subject-photo">
+                    <img src="website pic.jpg" alt="Agent Photo" style="width:100%; height:100%; object-fit:cover;">
                 </div>
             </div>
         </div>
+
+        <div class="section">
+            <div class="section-header">
+                <span>BACKGROUND</span>
+                <span class="clearance-level">TS//SI</span>
+            </div>
+            <div class="education-item">
+                <h3>VELLORE INSTITUTE OF TECHNOLOGY</h3>
+                <p>
+                    PROGRAM: B.Tech in Computer Science Engineering (IoT)<br>
+                    DURATION: August 2021 - May 2025<br>
+                    PERFORMANCE METRIC: <b>9.09 GPA</b><br>
+                    STATUS: Special Achiever
+                </p>
+            </div>
+            <div class="education-item">
+                <h3>CLARENCE HIGH SCHOOL</h3>
+                <p>
+                    ISC - Achievement Level: 98.5% (2019-2021)<br>
+                    ICSE - Achievement Level: 97% (2008-2019)
+                </p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <span>SPECIAL QUALIFICATIONS</span>
+                <span class="clearance-level">TS//SI//REL</span>
+            </div>
+            <p>
+                TECHNICAL SKILLS:<br>
+                - Internet of Things Architectures<br>
+                - Wearable Computing<br>
+                - Fog and Edge Computing<br>
+                - BLE Communication<br>
+                - WSN Designs<br>
+                - Artificial Intelligence & Machine Learning<br>
+                - Predictive Maintenance<br>
+                - PyTorch, TensorFlow <br>
+                - Natural Language Processing             </p>
+            <p>
+                LANGUAGES MASTERED:<br>
+                - TECHNICAL: Java, Python, C, C++, JavaScript, SQL, R<br>
+                - HUMAN: English, French, German, Malayalam, Kannada, Hindi
+            </p>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <span>POSITIONS HELD</span>
+                <span class="clearance-level">TS//SI</span>
+            </div>
+            <div class="operation-card">
+                <h4>- PRESIDENT, <br>VIT Model United Nations Society</h4>
+                <p>DURATION: January 2023 - Present</p>
+                <h4>- CHIEF COORDINATOR, <br>Second International Conference on Emerging Trends in Information Technology and Engineering (ic-ETITE 2024), IEEE</h4>
+                <p>DURATION: February 2024</p>
+                <h4>- OPERATIONS LEAD, (Board Advisory), <br>Sigma Xi Scientific Research Society</h4>
+                <p>DURATION: January 2023 - January 2024</p>
+                <h4>- President, <br>Evangelical Union</h4>
+                <p>DURATION: December 2022 - Present</p>
+                <h4>- School Captain and House Captain, <br>Clarence High School, Bengaluru</h4>
+                <p>DURATION: January 2020 - January 2021</p>
+            
+                <!--<div class="operation-details"> 
+                    - Command of 2000-member cultural organization<br>
+                    - Chargé D'Affaires, VIT Model United Nations Conference 2024<br>
+                    - Oversight of 40 Under Secretary Generals and 120 Deputies<br>
+                    - Head Trainer, Substantive Core Committee<br>
+                    - Multiple "Best Delegate" achievements
+                </div>
+            -->
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <span>OPERATIONAL HISTORY</span>
+                <span class="clearance-level">Research and Experience</span>
+            </div>
+            <div class="operation-card">
+                <h3> Research Publication: Implementing the Chess Engine using NNUE with Nega-Max Algorithm</h3>
+                <p>STATUS: <a href="https://ieeexplore.ieee.org/document/10677087" target="_blank">Published in International Conference on Electronics, Computing and Communication Technologies (CONECCT) IEEE Bangalore, Indian Institute of Science (IISc)</a>.
+                </p>
+                <div class="operation-details">
+                    - Engineered advanced computational model through a chess engine utilizing NNUE and Nega-Max algorithms<br>
+                    - Achieved performance metrics surpassing StockFish v16.0<br>
+                </div>
+            </div>
+            <div class="operation-card">
+                <h3>NIMBLEWORK INC</h3>
+                <p>ROLE: Data Science Consultant<br>
+                DURATION: August 2023 - December 2023</p>
+                <div class="operation-details">
+                    - Spearheaded the development of an advanced IoT integration product to transform Indian agriculture<br>
+                    - Leveraged Large Language Models in IoT Hardware Communications via API calls.<br>
+                    - Utilized LoRa technology for robust device connectivity<br>
+                    - Conducted field testing, receiving positive feedback from customers.<br>
+                    - Acted as a liaison between the “Artificial Intelligence Division” and the “Agriculture Technology Division”.
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <span>ONGOING MISSIONS</span>
+                <span class="clearance-level">PROJECTS</span>
+            </div>
+            <div class="operation-card">
+                <h3>Hospital-Acquired Infection Prevention through Smart Proximity Tracking</h3>
+                <p>STATUS: Active <br>
+                COLLABORATION: Infectious Diseases Department, Christian Medical College, Vellore &  Vellore Institute of Technology, Vellore</p>
+                <div class="operation-details">
+                    - Developing Intelligent Positioning System using Bowyer-Watson triangulation<br>
+                    - Implementing BLE and wearable health technologies<br>
+                    - Applying ensemble-based boosted decision trees for infection prevention
+                </div>
+            </div>
+            <div class="operation-card">
+                <h3>Advanced Emotion Recognition from EEG Data: A Hybrid Approach Using Autoencoders 	August 2024 - Present
+                    and LSTM
+                    </h3>
+                <p>STATUS: Active <br>
+                <div class="operation-details">
+                    - Sentiment Analysis combining Autoencoders for feature extraction and LSTM networks to capture temporal dependencies in EEG signals.
+                </div>
+            </div>
+            <div class="operation-card">
+                <h3>Smart Tunnel Gate Management System
+                    </h3>
+                <p>STATUS: COMPLETED April 2023<br>
+                <div class="operation-details">
+                    - Designed and Implemented an Image Processing software through 8051 Microcontrollers using Machine Learning and Computer Vision Principles.
+                </div>
+            </div>
+        </div>
+
+
+        <footer style="text-align: center; margin-top: 2rem; font-size: 0.8rem;">
+            <p>THIS DOCUMENT CONTAINS CLASSIFIED INFORMATION<br>
+            Unauthorized disclosure subject to administrative and criminal sanctions<br>
+            The contents of this page are a work in progress given the dynamic nature of the agent in question
+        </p>
+        </footer>
     </div>
-    <script src="script.js"></script>
 </body>
 </html>
